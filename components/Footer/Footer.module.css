@@ -1,0 +1,11 @@
+.footer {
+  background-color: var(--card);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 24px;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

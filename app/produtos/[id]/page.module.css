@@ -1,0 +1,83 @@
+.pagina {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.voltar {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+  transition: opacity 0.2s;
+}
+
+.voltar:hover {
+  opacity: 0.7;
+}
+
+.conteudo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.imagemBox {
+  position: relative;
+  height: 380px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.categoria {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  background-color: var(--border);
+  padding: 4px 10px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.titulo {
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.preco {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.avaliacao {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.descricao {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .conteudo {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .imagemBox {
+    height: 280px;
+  }
+}
