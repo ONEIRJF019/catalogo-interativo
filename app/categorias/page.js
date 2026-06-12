@@ -2,23 +2,9 @@ import Link from 'next/link'
 import { categoriaPtBr } from '@/lib/produtos'
 import styles from './page.module.css'
 
-export const dynamic = 'force-dynamic'
+const categorias = ['electronics', 'jewelery', "men's clothing", "women's clothing"]
 
-async function getCategorias() {
-  try {
-    const res = await fetch('https://fakestoreapi.com/products/categories', {
-      cache: 'no-store',
-    })
-    if (!res.ok) return []
-    return res.json()
-  } catch {
-    return []
-  }
-}
-
-export default async function Categorias() {
-  const categorias = await getCategorias()
-
+export default function Categorias() {
   return (
     <div className={styles.pagina}>
       <h1 className={styles.titulo}>Categorias</h1>

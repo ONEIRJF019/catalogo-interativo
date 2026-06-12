@@ -1,23 +1,19 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import ProductCard from '@/components/ProductCard/ProductCard'
 import styles from './page.module.css'
 
-export const dynamic = 'force-dynamic'
+export default function Home() {
+  const [produtos, setProdutos] = useState([])
 
-async function getProdutosDestaque() {
-  try {
-    const res = await fetch('https://fakestoreapi.com/products?limit=4', {
-      cache: 'no-store',
-    })
-    if (!res.ok) return []
-    return res.json()
-  } catch {
-    return []
-  }
-}
-
-export default async function Home() {
-  const produtos = await getProdutosDestaque()
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products?limit=4')
+      .then((res) => res.json())
+      .then((data) => setProdutos(data))
+      .catch(() => {})
+  }, [])
 
   return (
     <div>
