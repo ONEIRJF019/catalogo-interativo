@@ -15,15 +15,21 @@ export default async function Home() {
   return (
     <div>
       <section className={styles.hero}>
-        <h1>Os melhores produtos de tecnologia</h1>
-        <p>Encontre eletrônicos, gadgets e muito mais no nosso catálogo.</p>
-        <Link href="/produtos" className={styles.botao}>
-          Ver todos os produtos
-        </Link>
+        <div className={styles.heroInner}>
+          <span className={styles.heroBadge}>Catálogo de Produtos</span>
+          <h1>Os melhores produtos de tecnologia</h1>
+          <p>Eletrônicos, gadgets, roupas e acessórios. Encontre tudo no nosso catálogo.</p>
+          <Link href="/produtos" className={styles.botao}>
+            Comprar agora
+          </Link>
+        </div>
       </section>
 
       <section className={styles.destaques}>
-        <h2>Destaques</h2>
+        <div className={styles.destaquesHeader}>
+          <h2>Destaques</h2>
+          <Link href="/produtos" className={styles.verTodos}>Ver todos</Link>
+        </div>
         <div className={styles.grid}>
           {produtos.map((p) => (
             <ProductCard

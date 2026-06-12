@@ -1,21 +1,20 @@
 .input {
   width: 100%;
   padding: 14px 18px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  font-size: 0.95rem;
+  border: 1px solid #cccccc;
+  border-radius: 40px;
+  font-size: 0.9rem;
   background-color: var(--card);
   color: var(--text);
   outline: none;
-  box-shadow: var(--shadow-sm);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input::placeholder {
-  color: var(--text-light);
+  color: #aaaaaa;
 }
 
 .input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  border-color: var(--text);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
 }

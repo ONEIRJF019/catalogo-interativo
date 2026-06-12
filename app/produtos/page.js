@@ -87,6 +87,7 @@ function ListaProdutos() {
               price={p.price}
               image={p.image}
               rating={p.rating}
+              category={p.category}
             />
           ))}
         </div>

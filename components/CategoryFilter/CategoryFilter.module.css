@@ -5,32 +5,33 @@
 }
 
 .botao {
-  padding: 8px 18px;
-  border: 1.5px solid var(--border);
-  border-radius: 100px;
-  background-color: var(--card);
+  padding: 8px 20px;
+  border: 1px solid #cccccc;
+  border-radius: 40px;
+  background-color: transparent;
   color: var(--text-light);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
   cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: var(--shadow-sm);
+  transition: all 0.15s;
 }
 
 .botao:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background-color: rgba(37, 99, 235, 0.05);
+  border-color: var(--text);
+  color: var(--text);
 }
 
 .ativo {
-  padding: 8px 18px;
-  border: 1.5px solid var(--accent);
-  border-radius: 100px;
-  background-color: var(--accent);
+  padding: 8px 20px;
+  border: 1px solid var(--text);
+  border-radius: 40px;
+  background-color: var(--text);
   color: #ffffff;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.3);
 }
