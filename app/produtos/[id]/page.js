@@ -4,15 +4,25 @@ import { nomePtBr, descricaoPtBr, categoriaPtBr, formatarPreco } from '@/lib/pro
 import styles from './page.module.css'
 
 async function getProduto(id) {
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
-    next: { revalidate: 3600 },
-  })
-  return res.json()
+  try {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
+      next: { revalidate: 3600 },
+    })
+    if (!res.ok) return null
+    return res.json()
+  } catch {
+    return null
+  }
 }
 
 export default async function DetalheProduto({ params }) {
   const { id } = await params
   const produto = await getProduto(id)
+
+  if (!produto) {
+    return <div style={{ padding: '48px 32px' }}>Produto não encontrado.</div>
+  }
+
   const nome = nomePtBr(Number(id)) || produto.title
   const descricao = descricaoPtBr(Number(id)) || produto.description
 

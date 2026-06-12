@@ -3,10 +3,15 @@ import { categoriaPtBr } from '@/lib/produtos'
 import styles from './page.module.css'
 
 async function getCategorias() {
-  const res = await fetch('https://fakestoreapi.com/products/categories', {
-    next: { revalidate: 3600 },
-  })
-  return res.json()
+  try {
+    const res = await fetch('https://fakestoreapi.com/products/categories', {
+      next: { revalidate: 3600 },
+    })
+    if (!res.ok) return []
+    return res.json()
+  } catch {
+    return []
+  }
 }
 
 export default async function Categorias() {
