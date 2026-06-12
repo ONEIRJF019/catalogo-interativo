@@ -2,10 +2,11 @@
   background-color: var(--card);
   border-top: 1px solid var(--border);
   text-align: center;
-  padding: 24px;
+  padding: 28px 24px;
   color: var(--text-light);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  letter-spacing: 0.1px;
 }
