@@ -2,10 +2,12 @@ import Link from 'next/link'
 import ProductCard from '@/components/ProductCard/ProductCard'
 import styles from './page.module.css'
 
+export const dynamic = 'force-dynamic'
+
 async function getProdutosDestaque() {
   try {
     const res = await fetch('https://fakestoreapi.com/products?limit=4', {
-      next: { revalidate: 3600 },
+      cache: 'no-store',
     })
     if (!res.ok) return []
     return res.json()

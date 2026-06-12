@@ -2,10 +2,12 @@ import Link from 'next/link'
 import { categoriaPtBr } from '@/lib/produtos'
 import styles from './page.module.css'
 
+export const dynamic = 'force-dynamic'
+
 async function getCategorias() {
   try {
     const res = await fetch('https://fakestoreapi.com/products/categories', {
-      next: { revalidate: 3600 },
+      cache: 'no-store',
     })
     if (!res.ok) return []
     return res.json()
