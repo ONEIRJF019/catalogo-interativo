@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { categoriaPtBr } from '@/lib/produtos'
 import styles from './page.module.css'
 
 async function getCategorias() {
@@ -23,7 +24,7 @@ export default async function Categorias() {
             href={`/produtos?categoria=${cat}`}
             className={styles.card}
           >
-            <span className={styles.nome}>{cat}</span>
+            <span className={styles.nome}>{categoriaPtBr(cat)}</span>
             <span className={styles.link}>Ver produtos →</span>
           </Link>
         ))}

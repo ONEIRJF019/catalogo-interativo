@@ -10,3 +10,9 @@
   gap: 4px;
   letter-spacing: 0.1px;
 }
+
+.copy {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  opacity: 0.7;
+}

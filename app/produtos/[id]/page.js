@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { nomePtBr, formatarPreco } from '@/lib/produtos'
+import { nomePtBr, categoriaPtBr, formatarPreco } from '@/lib/produtos'
 import styles from './page.module.css'
 
 async function getProduto(id) {
@@ -11,8 +11,9 @@ async function getProduto(id) {
 }
 
 export default async function DetalheProduto({ params }) {
-  const produto = await getProduto(params.id)
-  const nome = nomePtBr(Number(params.id)) || produto.title
+  const { id } = await params
+  const produto = await getProduto(id)
+  const nome = nomePtBr(Number(id)) || produto.title
 
   return (
     <div className={styles.pagina}>
@@ -32,7 +33,7 @@ export default async function DetalheProduto({ params }) {
         </div>
 
         <div className={styles.info}>
-          <span className={styles.categoria}>{produto.category}</span>
+          <span className={styles.categoria}>{categoriaPtBr(produto.category)}</span>
           <h1 className={styles.titulo}>{nome}</h1>
           <p className={styles.preco}>{formatarPreco(produto.price)}</p>
           <p className={styles.avaliacao}>

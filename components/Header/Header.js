@@ -9,7 +9,7 @@ export default function Header() {
           TechStore
         </Link>
         <nav className={styles.nav}>
-          <Link href="/">Home</Link>
+          <Link href="/">Início</Link>
           <Link href="/produtos">Produtos</Link>
           <Link href="/categorias">Categorias</Link>
           <Link href="/sobre">Sobre</Link>

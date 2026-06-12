@@ -1,5 +1,6 @@
 'use client'
 
+import { categoriaPtBr } from '@/lib/produtos'
 import styles from './CategoryFilter.module.css'
 
 export default function CategoryFilter({ categories, categoriaSelecionada, onSelect }) {
@@ -18,7 +19,7 @@ export default function CategoryFilter({ categories, categoriaSelecionada, onSel
           className={categoriaSelecionada === categoria ? styles.ativo : styles.botao}
           onClick={() => onSelect(categoria)}
         >
-          {categoria}
+          {categoriaPtBr(categoria)}
         </button>
       ))}
     </div>

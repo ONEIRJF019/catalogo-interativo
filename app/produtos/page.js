@@ -1,16 +1,22 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { nomePtBr } from '@/lib/produtos'
 import ProductCard from '@/components/ProductCard/ProductCard'
 import SearchBar from '@/components/SearchBar/SearchBar'
 import CategoryFilter from '@/components/CategoryFilter/CategoryFilter'
 import styles from './page.module.css'
 
-export default function Produtos() {
+function ListaProdutos() {
+  const searchParams = useSearchParams()
+
   const [todos, setTodos] = useState([])
   const [filtrados, setFiltrados] = useState([])
   const [categorias, setCategorias] = useState([])
-  const [categoriaSelecionada, setCategoriaSelecionada] = useState('')
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState(
+    searchParams.get('categoria') || ''
+  )
   const [busca, setBusca] = useState('')
   const [carregando, setCarregando] = useState(true)
 
@@ -23,7 +29,6 @@ export default function Produtos() {
       const produtos = await produtosRes.json()
       const cats = await categoriasRes.json()
       setTodos(produtos)
-      setFiltrados(produtos)
       setCategorias(cats)
       setCarregando(false)
     }
@@ -38,9 +43,10 @@ export default function Produtos() {
     }
 
     if (busca !== '') {
-      resultado = resultado.filter((p) =>
-        p.title.toLowerCase().includes(busca.toLowerCase())
-      )
+      resultado = resultado.filter((p) => {
+        const nome = nomePtBr(p.id) || p.title
+        return nome.toLowerCase().includes(busca.toLowerCase())
+      })
     }
 
     setFiltrados(resultado)
@@ -86,5 +92,13 @@ export default function Produtos() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function Produtos() {
+  return (
+    <Suspense fallback={<p style={{ padding: '60px 24px', color: '#64748b' }}>Carregando...</p>}>
+      <ListaProdutos />
+    </Suspense>
   )
 }
