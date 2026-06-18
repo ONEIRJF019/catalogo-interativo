@@ -1,26 +1,30 @@
+'use client'
+
+import { useState, useEffect, use } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { nomePtBr, descricaoPtBr, categoriaPtBr, formatarPreco } from '@/lib/produtos'
 import styles from './page.module.css'
 
-async function getProduto(id) {
-  try {
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
-      next: { revalidate: 3600 },
-    })
-    if (!res.ok) return null
-    return res.json()
-  } catch {
-    return null
-  }
-}
+export default function DetalheProduto({ params }) {
+  const { id } = use(params)
+  const [produto, setProduto] = useState(null)
+  const [carregando, setCarregando] = useState(true)
 
-export default async function DetalheProduto({ params }) {
-  const { id } = await params
-  const produto = await getProduto(id)
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => setProduto(data))
+      .catch(() => {})
+      .finally(() => setCarregando(false))
+  }, [id])
+
+  if (carregando) {
+    return <div className={styles.pagina}>Carregando...</div>
+  }
 
   if (!produto) {
-    return <div style={{ padding: '48px 32px' }}>Produto não encontrado.</div>
+    return <div className={styles.pagina}>Produto não encontrado.</div>
   }
 
   const nome = nomePtBr(Number(id)) || produto.title
